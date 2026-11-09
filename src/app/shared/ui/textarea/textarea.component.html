@@ -1,0 +1,12 @@
+<div class="erp-field">
+  <label class="erp-label" [for]="inputId()">
+    {{ label() }}
+  </label>
+
+  <textarea class="erp-control" [id]="inputId()" [rows]="rows()" [value]="value ?? ''" [placeholder]="placeholder()"
+    [disabled]="disabled" (input)="updateValue($any($event.target).value)" (blur)="markTouched()"></textarea>
+
+  @if (hint()) {
+  <small class="erp-hint">{{ hint() }}</small>
+  }
+</div>

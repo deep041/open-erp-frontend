@@ -1,0 +1,46 @@
+<div class="playground">
+  <h1>ERP UI Components</h1>
+  <p>Reusable form controls playground</p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="grid">
+      <erp-input inputId="company" label="Company name" placeholder="Enter company name" formControlName="company"
+        [required]="true" />
+
+      <erp-input inputId="email" label="Email" type="email" placeholder="you@company.com" formControlName="email" />
+
+      <erp-select inputId="businessType" label="Business type" [options]="businessTypes"
+        formControlName="businessType" />
+
+      <erp-radio-group label="Customer type" variant="card" [options]="customerTypes" formControlName="customerType" />
+
+      <erp-radio-group label="Customer type" variant="compact" [vertical]="true" [options]="customerTypes"
+        formControlName="customerType" />
+    </div>
+
+    <erp-textarea inputId="notes" label="Notes" formControlName="notes" />
+
+    <erp-checkbox formControlName="isActive">
+      Active organization
+    </erp-checkbox>
+
+    <erp-switch label="Email notifications" description="Receive organization updates"
+      formControlName="notifications" />
+
+      <div class="button-showcase">
+        <erp-button>Primary</erp-button>
+        <erp-button variant="secondary">Secondary</erp-button>
+        <erp-button variant="outline">Outline</erp-button>
+        <erp-button variant="danger" (click)="deleteCustomer()">Danger</erp-button>
+        <erp-button variant="ghost">Ghost</erp-button>
+        <erp-button [loading]="true">Saving...</erp-button>
+      </div>
+
+    <erp-button type="submit" [disabled]="form.invalid">
+      Submit
+    </erp-button>
+  </form>
+
+  <h2>Live form values</h2>
+  <pre>{{ form.getRawValue() | json }}</pre>
+</div>

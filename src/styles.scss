@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use './styles/tokens';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import '@angular/cdk/overlay-prebuilt.css';
 
 * {
   box-sizing: border-box;
@@ -52,4 +53,8 @@ input:focus-visible {
 
 ::selection {
   background: var(--erp-primary-soft);
+}
+
+.erp-dialog-panel {
+  max-width: 100vw;
 }

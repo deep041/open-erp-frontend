@@ -1,0 +1,7 @@
+<button [type]="type()" [class]="'erp-button ' + variant() + ' ' + size()" [class.full-width]="fullWidth()"
+  [disabled]="disabled() || loading()" [attr.aria-busy]="loading()">
+  @if (loading()) {
+  <span class="spinner" aria-hidden="true"></span>
+  }
+  <ng-content />
+</button>

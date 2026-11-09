@@ -1,0 +1,25 @@
+<section class="dialog" role="document" aria-labelledby="erp-dialog-title" aria-describedby="erp-dialog-message">
+  <div class="dialog-top">
+    <span class="dialog-icon" [class.danger]="data.variant === 'danger'">
+      <lucide-icon [img]="data.variant === 'danger'
+              ? AlertTriangle : Info" [size]="21" />
+    </span>
+
+    <button type="button" class="close" aria-label="Close dialog" (click)="ref.close(false)">
+      <lucide-icon [img]="X" [size]="18" />
+    </button>
+  </div>
+
+  <h2 id="erp-dialog-title">{{ data.title }}</h2>
+  <p id="erp-dialog-message">{{ data.message }}</p>
+
+  <div class="actions">
+    <button type="button" class="cancel" (click)="ref.close(false)">
+      {{ data.cancelText || 'Cancel' }}
+    </button>
+
+    <button type="button" class="confirm" [class.danger]="data.variant === 'danger'" (click)="ref.close(true)">
+      {{ data.confirmText || 'Confirm' }}
+    </button>
+  </div>
+</section>

@@ -1,0 +1,7 @@
+<label class="erp-choice">
+  <input type="checkbox" [checked]="value" [disabled]="disabled" (change)="updateValue($any($event.target).checked)"
+    (blur)="markTouched()" />
+  <span>
+    <ng-content />
+  </span>
+</label>

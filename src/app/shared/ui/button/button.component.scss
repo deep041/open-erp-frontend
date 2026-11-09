@@ -1,0 +1,96 @@
+:host { display: inline-block; }
+
+    :host:has(.full-width) {
+      display: block;
+      width: 100%;
+    }
+
+    .erp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      font: inherit;
+      font-weight: 650;
+      transition: .18s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .md { min-height: 42px; padding: 0 17px; font-size: 12px; }
+    .sm { min-height: 34px; padding: 0 12px; font-size: 11px; }
+    .lg { min-height: 48px; padding: 0 21px; font-size: 13px; }
+
+    .primary {
+      background: var(--erp-primary, #6c5ce7);
+      color: white;
+    }
+
+    .primary:hover:not(:disabled) {
+      background: var(--erp-primary-dark, #5947d4);
+    }
+
+    .secondary {
+      background: #f2efff;
+      color: #5947d4;
+    }
+
+    .outline {
+      background: white;
+      border-color: var(--erp-border, #e9ecf3);
+      color: #34405a;
+    }
+
+    .outline:hover:not(:disabled) {
+      border-color: #b9adff;
+      background: #faf9ff;
+    }
+
+    .danger {
+      background: #dc2626;
+      color: white;
+    }
+
+    .danger:hover:not(:disabled) {
+      background: #b91c1c;
+    }
+
+    .ghost {
+      background: transparent;
+      color: #66728b;
+    }
+
+    .ghost:hover:not(:disabled) {
+      background: #f3f1ff;
+    }
+
+    .full-width { width: 100%; }
+
+    button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #6c5ce755;
+      outline-offset: 2px;
+    }
+
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner { animation-duration: 2s; }
+    }

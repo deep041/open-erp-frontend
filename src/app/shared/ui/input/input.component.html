@@ -1,0 +1,21 @@
+<div class="erp-field">
+  @if (label()) {
+  <label class="erp-label" [for]="inputId()">
+    {{ label() }}
+    @if (required()) {
+    <span class="erp-required">*</span>
+    }
+  </label>
+  }
+
+  <input class="erp-control" [id]="inputId()" [type]="type()" [value]="value ?? ''" [placeholder]="placeholder()"
+    [disabled]="disabled" [required]="required()" [attr.autocomplete]="autocomplete()" [attr.aria-invalid]="invalid()"
+    [attr.aria-describedby]="hint() ? inputId() + '-hint' : null" (input)="updateValue($any($event.target).value)"
+    (blur)="markTouched()" />
+
+  @if (hint()) {
+  <small class="erp-hint" [id]="inputId() + '-hint'">
+    {{ hint() }}
+  </small>
+  }
+</div>

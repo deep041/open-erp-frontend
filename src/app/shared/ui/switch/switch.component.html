@@ -1,0 +1,15 @@
+<label class="switch-row">
+  <span class="switch-copy">
+    <strong>{{ label() }}</strong>
+    @if (description()) {
+    <small>{{ description() }}</small>
+    }
+  </span>
+
+  <input class="switch-input" type="checkbox" role="switch" [checked]="value" [disabled]="disabled"
+    (change)="updateValue($any($event.target).checked)" (blur)="markTouched()" />
+
+  <span class="switch-track" aria-hidden="true">
+    <span class="switch-thumb"></span>
+  </span>
+</label>

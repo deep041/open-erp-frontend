@@ -58,6 +58,13 @@ export const routes: Routes = [
     redirectTo: 'organizations',
   },
   {
+    path: 'ui-playground',
+    loadComponent: () =>
+      import(
+        './features/ui-playground/ui-playground.component'
+      ).then(m => m.UiPlaygroundComponent),
+  },
+  {
     path: '**',
     redirectTo: 'organizations',
   },

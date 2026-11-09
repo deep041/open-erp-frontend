@@ -11,7 +11,7 @@ import { OrganizationService } from '../organizations/organization.service';
     LucideAngularModule,
     RouterLink,
     StatCardComponent
-  ],
+],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
