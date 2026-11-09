@@ -1,0 +1,137 @@
+<div class="auth-page">
+  <div class="auth-content">
+    <a class="brand" routerLink="/login">
+      <span class="brand-icon">◇</span>
+      workspace
+    </a>
+
+    <main class="auth-center">
+      <div class="eyebrow">GET STARTED</div>
+      <h1>Create your account</h1>
+      <p class="subtitle">
+        Start building a smarter, more connected business.
+      </p>
+
+      <form class="auth-form" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="name-grid">
+          <div class="form-group">
+            <label for="first-name">First name</label>
+            <div class="input-wrap">
+              <lucide-icon [img]="UserRound" [size]="16" />
+              <input id="first-name" placeholder="John" formControlName="firstName" autocomplete="given-name" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="last-name">Last name</label>
+            <div class="input-wrap">
+              <input id="last-name" placeholder="Doe" formControlName="lastName" autocomplete="family-name" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="register-email">Email address</label>
+          <div class="input-wrap">
+            <lucide-icon [img]="Mail" [size]="17" />
+            <input id="register-email" type="email" placeholder="you@company.com" formControlName="email"
+              autocomplete="email" />
+          </div>
+          @if (form.controls.email.touched &&
+          form.controls.email.invalid) {
+          <span class="field-error">
+            Enter a valid email address.
+          </span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <div class="input-wrap">
+            <lucide-icon [img]="LockKeyhole" [size]="17" />
+            <input id="register-password" [type]="showPassword() ? 'text' : 'password'"
+              placeholder="At least 12 characters" formControlName="password" autocomplete="new-password" />
+            <button type="button" (click)="showPassword.set(!showPassword())" [attr.aria-label]="showPassword()
+                    ? 'Hide password' : 'Show password'">
+              <lucide-icon [img]="showPassword() ? EyeOff : Eye" [size]="17" />
+            </button>
+          </div>
+          @if (form.controls.password.touched &&
+          form.controls.password.invalid) {
+          <span class="field-error">
+            Use at least 12 characters.
+          </span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">Confirm password</label>
+          <div class="input-wrap">
+            <lucide-icon [img]="LockKeyhole" [size]="17" />
+            <input id="confirm-password" [type]="showPassword() ? 'text' : 'password'"
+              placeholder="Repeat your password" formControlName="confirmPassword" autocomplete="new-password" />
+          </div>
+
+          @if (form.hasError('passwordMismatch') &&
+          form.controls.confirmPassword.touched) {
+          <span class="field-error">
+            Passwords do not match.
+          </span>
+          }
+        </div>
+
+        @if (error()) {
+        <div class="form-error" role="alert">
+          {{ error() }}
+        </div>
+        }
+
+        <button class="submit-button" type="submit" [disabled]="form.invalid || loading()">
+          {{ loading() ? 'Creating account...' : 'Create account →' }}
+        </button>
+      </form>
+
+      <div class="auth-switch">
+        Already have an account?
+        <a routerLink="/login">Sign in</a>
+      </div>
+    </main>
+
+    <footer class="auth-footer">
+      © {{ year }} Workspace. Open-source ERP.
+    </footer>
+  </div>
+
+  <aside class="auth-visual">
+    <div class="visual-content">
+      <span class="visual-badge">✦ Built for growing teams</span>
+
+      <h2>
+        Your business deserves
+        <span style="color:#6c5ce7">
+          better tools.
+        </span>
+      </h2>
+
+      <p>
+        Bring your people, processes, and operations
+        together in one beautiful workspace.
+      </p>
+
+      <div class="visual-card">
+        <div class="visual-card-title">
+          One platform for your entire business
+        </div>
+
+        <div class="feature-list">
+          @for (feature of features; track feature) {
+          <div class="feature-item">
+            <span class="feature-check">✓</span>
+            {{ feature }}
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>

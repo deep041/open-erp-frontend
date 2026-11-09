@@ -1,0 +1,22 @@
+<article class="stat-card">
+  <div class="stat-heading">
+    <span>{{ label() }}</span>
+    @if (icon()) {
+    <lucide-icon [img]="icon()!" [size]="17" />
+    }
+  </div>
+
+  <div class="stat-value">
+    {{ value() ?? '—' }}
+  </div>
+
+  @if (change()) {
+  <div class="stat-change">
+    <lucide-icon [img]="TrendingUp" [size]="13" />
+    <strong>{{ change() }}</strong>
+    <span>vs last month</span>
+  </div>
+  } @else {
+  <p class="stat-empty">{{ description() }}</p>
+  }
+</article>

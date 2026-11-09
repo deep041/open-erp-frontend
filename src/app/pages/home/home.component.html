@@ -1,0 +1,561 @@
+<div class="website">
+
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="nav-inner">
+
+      <a class="brand" routerLink="/" (click)="closeMenu()">
+        <span class="brand-symbol">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 3L29 16L16 29L3 16L16 3Z" stroke="currentColor" stroke-width="2.5" />
+            <path d="M16 10L22 16L16 22L10 16L16 10Z" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="brand-name">open<span>erp</span></span>
+        <span class="brand-beta">BETA</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        @for (link of navLinks; track link.href) {
+        <a [href]="link.href">{{ link.label }}</a>
+        }
+      </nav>
+
+      <div class="nav-actions">
+        <a routerLink="/auth/login" class="nav-login">Sign in</a>
+        <a routerLink="/auth/register" class="nav-button">
+          Get started
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <button class="menu-toggle" type="button" [attr.aria-expanded]="mobileMenuOpen()"
+        aria-controls="mobile-navigation" [attr.aria-label]="mobileMenuOpen() ? 'Close menu' : 'Open menu'"
+        (click)="toggleMenu()">
+        <span [class.line-one-open]="mobileMenuOpen()"></span>
+        <span [class.line-two-open]="mobileMenuOpen()"></span>
+        <span [class.line-three-open]="mobileMenuOpen()"></span>
+      </button>
+
+    </div>
+
+    @if (mobileMenuOpen()) {
+    <nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation">
+      @for (link of navLinks; track link.href) {
+      <a [href]="link.href" (click)="closeMenu()">
+        {{ link.label }}
+        <span>↗</span>
+      </a>
+      }
+
+      <div class="mobile-nav-actions">
+        <a routerLink="/auth/login" (click)="closeMenu()">
+          Sign in
+        </a>
+        <a routerLink="/auth/register" class="mobile-start" (click)="closeMenu()">
+          Get started →
+        </a>
+      </div>
+    </nav>
+    }
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
+      <div class="container hero-inner">
+
+        <div class="hero-copy">
+          <a href="#features" class="announcement">
+            <span class="announcement-dot"></span>
+            Introducing the open ERP platform
+            <span class="announcement-arrow">↗</span>
+          </a>
+
+          <h1>
+            Your business.
+            <br />
+            <span class="gradient-text">One powerful</span>
+            <br />
+            platform.
+          </h1>
+
+          <p class="hero-description">
+            The open-source ERP built for modern businesses.
+            Bring your teams, workflows and data together
+            in one beautifully connected workspace.
+          </p>
+
+          <div class="hero-buttons">
+            <a routerLink="/auth/register" class="button-primary">
+              Start building for free
+              <span>↗</span>
+            </a>
+
+            <a href="#modules" class="button-secondary">
+              Explore the platform
+              <span>→</span>
+            </a>
+          </div>
+
+          <div class="hero-trust">
+            <span><i class="trust-check">✓</i> Open source</span>
+            <span><i class="trust-check">✓</i> Self-hostable</span>
+            <span><i class="trust-check">✓</i> Extensible</span>
+          </div>
+        </div>
+
+        <!-- DASHBOARD PREVIEW -->
+        <div class="dashboard-shell">
+          <div class="dashboard-window">
+
+            <aside class="dashboard-sidebar">
+              <div class="sidebar-brand">
+                <span class="sidebar-logo">◈</span>
+                <strong>workspace</strong>
+                <span class="sidebar-chevron">⌄</span>
+              </div>
+
+              <div class="sidebar-section-label">WORKSPACE</div>
+
+              <div class="sidebar-link selected">
+                <span>▦</span> Overview
+              </div>
+              <div class="sidebar-link"><span>▤</span> Sales</div>
+              <div class="sidebar-link"><span>◈</span> Accounting</div>
+              <div class="sidebar-link"><span>▧</span> Inventory</div>
+              <div class="sidebar-link"><span>♧</span> Customers</div>
+
+              <div class="sidebar-section-label second-label">
+                MANAGEMENT
+              </div>
+              <div class="sidebar-link"><span>◫</span> Projects</div>
+              <div class="sidebar-link"><span>⚙</span> Settings</div>
+
+              <div class="sidebar-bottom">
+                <div class="sidebar-user-avatar">JD</div>
+                <div>
+                  <strong>John Doe</strong>
+                  <small>Administrator</small>
+                </div>
+                <span>⋯</span>
+              </div>
+            </aside>
+
+            <div class="dashboard-main">
+              <div class="dashboard-topbar">
+                <div class="breadcrumb">
+                  Workspace <span>/</span> Overview
+                </div>
+                <div class="topbar-actions">
+                  <span>⌕</span>
+                  <span>♧</span>
+                  <span class="topbar-avatar">JD</span>
+                </div>
+              </div>
+
+              <div class="dashboard-content">
+                <div class="dashboard-heading">
+                  <div>
+                    <div class="dashboard-eyebrow">MONDAY, NOVEMBER 9</div>
+                    <h3>Good morning, John <span>✳</span></h3>
+                    <p>Here's what's happening with your business.</p>
+                  </div>
+                  <div class="date-chip">Last 30 days⌄</div>
+                </div>
+
+                <div class="metric-grid">
+                  <div class="metric-card">
+                    <span class="metric-label">Total revenue</span>
+                    <strong>$48,290</strong>
+                    <span class="metric-growth">↗ 12.8% <em>vs last month</em></span>
+                  </div>
+
+                  <div class="metric-card">
+                    <span class="metric-label">Total orders</span>
+                    <strong>1,284</strong>
+                    <span class="metric-growth">↗ 8.2% <em>vs last month</em></span>
+                  </div>
+
+                  <div class="metric-card">
+                    <span class="metric-label">Active customers</span>
+                    <strong>3,642</strong>
+                    <span class="metric-growth">↗ 16.4% <em>vs last month</em></span>
+                  </div>
+                </div>
+
+                <div class="revenue-panel">
+                  <div class="panel-heading">
+                    <div>
+                      <h4>Revenue overview</h4>
+                      <p>Revenue performance over time</p>
+                    </div>
+                    <span class="panel-menu">•••</span>
+                  </div>
+
+                  <div class="chart-legend">
+                    <span><i></i> Revenue</span>
+                  </div>
+
+                  <div class="revenue-chart">
+                    <div class="chart-grid-lines">
+                      <span>$60k</span>
+                      <span>$40k</span>
+                      <span>$20k</span>
+                      <span>$0</span>
+                    </div>
+
+                    <svg viewBox="0 0 600 175" preserveAspectRatio="none" aria-label="Illustrative revenue trend"
+                      role="img">
+                      <defs>
+                        <linearGradient id="revenueFill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#7465ed" stop-opacity=".18" />
+                          <stop offset="100%" stop-color="#7465ed" stop-opacity="0" />
+                        </linearGradient>
+                      </defs>
+
+                      <path d="M0 140 C30 125 50 135 75 110 S125 120 155 100
+                           S205 85 230 100 S280 65 310 75
+                           S360 105 390 60 S440 75 470 40
+                           S530 60 555 25 S585 35 600 15
+                           L600 175 L0 175 Z" fill="url(#revenueFill)" />
+
+                      <path d="M0 140 C30 125 50 135 75 110 S125 120 155 100
+                           S205 85 230 100 S280 65 310 75
+                           S360 105 390 60 S440 75 470 40
+                           S530 60 555 25 S585 35 600 15" fill="none" stroke="#7465ed" stroke-width="3"
+                        stroke-linecap="round" />
+                    </svg>
+                  </div>
+
+                  <div class="chart-months">
+                    <span>Jun</span>
+                    <span>Jul</span>
+                    <span>Aug</span>
+                    <span>Sep</span>
+                    <span>Oct</span>
+                    <span>Nov</span>
+                  </div>
+                </div>
+
+                <div class="activity-panel">
+                  <div class="panel-heading">
+                    <h4>Recent activity</h4>
+                    <span class="view-all">View all →</span>
+                  </div>
+                  <div class="activity-row">
+                    <span class="activity-icon">↗</span>
+                    <div>
+                      <strong>Invoice #INV-2024</strong>
+                      <small>Payment received from Acme Inc.</small>
+                    </div>
+                    <span class="activity-amount">+$2,450</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="preview-caption">
+            <span class="preview-dot"></span>
+            Platform preview · Illustrative data
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="trust-strip">
+      <div class="container trust-inner">
+        <p>BUILT WITH A MODERN, PROVEN TECH STACK</p>
+        <div class="tech-logos">
+          <span>◈ Angular</span>
+          <span>⬡ NestJS</span>
+          <span>◉ PostgreSQL</span>
+          <span>▣ Docker</span>
+          <span>◇ TypeScript</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="section features-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-tag">THE PLATFORM</span>
+          <h2>Everything connected.<br /><span>Nothing complicated.</span></h2>
+          <p>
+            One flexible foundation to power your business,
+            from your first customer to your next big milestone.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          @for (feature of features; track feature.title) {
+          <article class="feature-card">
+            <div class="feature-symbol">{{ feature.icon }}</div>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </article>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULES -->
+    <section id="modules" class="section modules-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-tag">ONE PLATFORM. ENDLESS POSSIBILITIES.</span>
+          <h2>Every tool your team needs.<br /><span>All in one place.</span></h2>
+          <p>
+            Pick the modules you need today and expand
+            as your business grows.
+          </p>
+        </div>
+
+        <div class="modules-grid">
+          @for (module of modules; track module.title) {
+          <article class="module-card">
+            <div class="module-icon" [class]="'module-icon ' + module.color">
+              @switch (module.icon) {
+              @case ('chart') { <span>▥</span> }
+              @case ('users') { <span>♧</span> }
+              @case ('package') { <span>▣</span> }
+              @case ('shopping') { <span>◈</span> }
+              @case ('briefcase') { <span>▤</span> }
+              @case ('tasks') { <span>☷</span> }
+              }
+            </div>
+
+            <h3>{{ module.title }}</h3>
+            <p>{{ module.description }}</p>
+
+            <span class="module-arrow" aria-hidden="true">↗</span>
+          </article>
+          }
+        </div>
+
+        <div class="modules-note">
+          <span class="note-sparkle">✦</span>
+          A modular platform designed to grow with your business.
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPLOYMENT -->
+    <section id="deployment" class="section deployment-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-tag">YOUR PLATFORM. YOUR RULES.</span>
+          <h2>Freedom to deploy<br /><span>your way.</span></h2>
+          <p>
+            Your infrastructure, your data, your choice.
+            Run on your own servers or build in the cloud.
+          </p>
+        </div>
+
+        <div class="deployment-grid">
+          <article class="deployment-card">
+            <div class="deployment-visual self-hosted-visual">
+              <div class="server-stack">
+                <div class="server-unit">
+                  <span class="server-lights"><i></i><i></i></span>
+                  <span class="server-lines"></span>
+                  <span class="server-status"></span>
+                </div>
+                <div class="server-unit">
+                  <span class="server-lights"><i></i><i></i></span>
+                  <span class="server-lines"></span>
+                  <span class="server-status"></span>
+                </div>
+                <div class="server-unit">
+                  <span class="server-lights"><i></i><i></i></span>
+                  <span class="server-lines"></span>
+                  <span class="server-status"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="deployment-copy">
+              <div class="deployment-label">01 / SELF-HOSTED</div>
+              <h3>Full control. Zero compromise.</h3>
+              <p>
+                Host on your own infrastructure with Docker.
+                Keep ownership of your data and customize
+                the platform for your organization.
+              </p>
+              <div class="deployment-tags">
+                <span>Docker</span>
+                <span>Own your data</span>
+                <span>Customizable</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="deployment-card">
+            <div class="deployment-visual cloud-visual">
+              <div class="cloud-orbit orbit-one"></div>
+              <div class="cloud-orbit orbit-two"></div>
+              <div class="cloud-center">☁</div>
+              <div class="orbit-node node-one">◈</div>
+              <div class="orbit-node node-two">▦</div>
+              <div class="orbit-node node-three">⚡</div>
+            </div>
+
+            <div class="deployment-copy">
+              <div class="deployment-label">02 / CLOUD-READY</div>
+              <h3>Built to scale with you.</h3>
+              <p>
+                Cloud-ready architecture designed for
+                scalable deployments, flexible infrastructure
+                and streamlined operations.
+              </p>
+              <div class="deployment-tags">
+                <span>Scalable</span>
+                <span>Cloud-ready</span>
+                <span>Flexible</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPERS -->
+    <section id="developers" class="section developer-section">
+      <div class="container developer-grid">
+        <div class="developer-copy">
+          <span class="section-tag dark-tag">MADE FOR BUILDERS</span>
+          <h2>Built open.<br /><span>Built to extend.</span></h2>
+          <p>
+            A modern, modular foundation built with Angular,
+            NestJS and PostgreSQL. Extend functionality,
+            integrate services and create the workflows
+            your business actually needs.
+          </p>
+
+          <div class="developer-benefits">
+            <span><i>✓</i> Modular architecture</span>
+            <span><i>✓</i> REST APIs</span>
+            <span><i>✓</i> Multi-tenant foundation</span>
+            <span><i>✓</i> Role-based permissions</span>
+          </div>
+
+          <a href="#deployment" class="developer-button">
+            Explore deployment <span>↗</span>
+          </a>
+        </div>
+
+        <div class="code-window">
+          <div class="code-titlebar">
+            <div class="window-dots">
+              <i></i><i></i><i></i>
+            </div>
+            <span>docker-compose.yml</span>
+            <span class="code-copy-label">YAML</span>
+          </div>
+
+          <div class="code-content">
+            <div><span class="code-muted"># Your ERP. Your infrastructure.</span></div>
+            <div><span class="code-purple">services:</span></div>
+            <div> <span class="code-blue">api:</span></div>
+            <div> <span class="code-purple">build:</span> <span class="code-green">./backend</span></div>
+            <div> <span class="code-purple">environment:</span></div>
+            <div> <span class="code-blue">DATABASE_URL:</span> <span
+                class="code-yellow">"&#36;&#123;DATABASE_URL&#125;"</span></div>
+            <div>&nbsp;</div>
+            <div> <span class="code-blue">web:</span></div>
+            <div> <span class="code-purple">build:</span> <span class="code-green">./frontend</span></div>
+            <div>&nbsp;</div>
+            <div> <span class="code-blue">postgres:</span></div>
+            <div> <span class="code-purple">image:</span> <span class="code-green">postgres:17</span></div>
+            <div> <span class="code-purple">volumes:</span></div>
+            <div> - <span class="code-yellow">postgres_data:/var/lib/postgresql/data</span></div>
+          </div>
+
+          <div class="code-statusbar">
+            <span><i></i> Ready to deploy</span>
+            <span>UTF-8 · YAML</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-inner">
+          <div class="cta-decoration decoration-one"></div>
+          <div class="cta-decoration decoration-two"></div>
+
+          <span class="cta-eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
+          <h2>Build a better way<br />to run your business.</h2>
+          <p>
+            One open platform. Unlimited possibilities.
+            Start shaping the workspace your business deserves.
+          </p>
+
+          <div class="cta-actions">
+            <a routerLink="/auth/register" class="cta-primary">
+              Get started for free <span>↗</span>
+            </a>
+            <a href="#modules" class="cta-secondary">
+              Explore modules →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand-block">
+          <a class="brand" routerLink="/">
+            <span class="brand-symbol">◈</span>
+            <span class="brand-name">open<span>erp</span></span>
+          </a>
+          <p>
+            The open-source platform for<br />
+            the next generation of businesses.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#modules">Modules</a>
+          <a href="#deployment">Deployment</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <a href="#developers">Developers</a>
+          <a href="#deployment">Self-hosting</a>
+          <a href="#features">Architecture</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Get started</h4>
+          <a routerLink="/auth/register">Create account</a>
+          <a routerLink="/auth/login">Sign in</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 OpenERP. Built for the open web.</span>
+        <!-- <span>Made with <span class="footer-heart">♥</span> for builders everywhere.</span> -->
+        <span>Developed with <span class="footer-heart">♥</span>
+        by <strong>Deep Patel</strong></span>
+      </div>
+    </div>
+  </footer>
+
+</div>

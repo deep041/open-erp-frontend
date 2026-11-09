@@ -1,0 +1,107 @@
+<div class="auth-page">
+  <div class="auth-content">
+    <a class="brand" routerLink="/login">
+      <span class="brand-icon">◇</span>
+      workspace
+    </a>
+
+    <main class="auth-center">
+      <div class="eyebrow">WELCOME BACK</div>
+      <h1>Sign in to your account</h1>
+      <p class="subtitle">
+        Enter your credentials to access your workspace.
+      </p>
+
+      <form class="auth-form" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label for="login-email">Email address</label>
+          <div class="input-wrap">
+            <lucide-icon [img]="Mail" [size]="17" />
+            <input id="login-email" type="email" placeholder="you@company.com" formControlName="email"
+              autocomplete="email" />
+          </div>
+
+          @if (form.controls.email.touched &&
+          form.controls.email.invalid) {
+          <span class="field-error">
+            Enter a valid email address.
+          </span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <div class="input-wrap">
+            <lucide-icon [img]="LockKeyhole" [size]="17" />
+            <input id="login-password" [type]="showPassword() ? 'text' : 'password'" placeholder="Enter your password"
+              formControlName="password" autocomplete="current-password" />
+            <button type="button" (click)="showPassword.set(!showPassword())" [attr.aria-label]="showPassword()
+                    ? 'Hide password' : 'Show password'">
+              <lucide-icon [img]="showPassword() ? EyeOff : Eye" [size]="17" />
+            </button>
+          </div>
+        </div>
+
+        @if (error()) {
+        <div class="form-error" role="alert">
+          {{ error() }}
+        </div>
+        }
+
+        <button class="submit-button" type="submit" [disabled]="form.invalid || loading()">
+          {{ loading() ? 'Signing in...' : 'Sign in' }}
+          @if (!loading()) {
+          <lucide-icon [img]="ArrowRight" [size]="16"
+            style="display:inline-block;vertical-align:middle;margin-left:7px" />
+          }
+        </button>
+      </form>
+
+      <div class="auth-switch">
+        Don't have an account?
+        <a routerLink="/register">Create an account</a>
+      </div>
+    </main>
+
+    <footer class="auth-footer">
+      © {{ year }} Workspace. Open-source ERP.
+    </footer>
+  </div>
+
+  <aside class="auth-visual" aria-label="ERP introduction">
+    <div class="visual-content">
+      <span class="visual-badge">
+        ✦ One workspace. Endless possibilities.
+      </span>
+
+      <h2>
+        Everything your business needs.
+        <span style="color:#6c5ce7">One platform.</span>
+      </h2>
+
+      <p>
+        Simplify your operations, connect your teams,
+        and manage your business with confidence.
+      </p>
+
+      <div class="visual-card">
+        <div class="visual-card-title">
+          Your business, beautifully organized
+        </div>
+
+        <div class="visual-bars">
+          @for (height of bars; track $index) {
+          <div class="visual-bar" [style.height.%]="height"></div>
+          }
+        </div>
+
+        <div class="visual-card-footer">
+          <span>Sales</span>
+          <span>Inventory</span>
+          <span>Customers</span>
+          <span>Accounting</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>

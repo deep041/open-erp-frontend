@@ -1,0 +1,17 @@
+<div class="erp-shell">
+  <div class="sidebar-container" [class.mobile-open]="mobileOpen()">
+    <app-sidebar (closeRequested)="mobileOpen.set(false)" />
+  </div>
+
+  @if (mobileOpen()) {
+  <button class="backdrop" aria-label="Close navigation" (click)="mobileOpen.set(false)"></button>
+  }
+
+  <div class="main-container">
+    <app-topbar (menuRequested)="mobileOpen.set(true)" />
+
+    <main class="content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

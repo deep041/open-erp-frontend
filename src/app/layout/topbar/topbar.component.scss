@@ -1,0 +1,101 @@
+.topbar {
+      height: var(--erp-topbar-height);
+      padding: 0 24px;
+      border-bottom: 1px solid var(--erp-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: white;
+    }
+
+    .breadcrumbs, .actions {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+    }
+
+    .breadcrumbs {
+      font-size: 11px;
+      color: #8793ad;
+    }
+
+    .breadcrumbs a:hover {
+      color: var(--erp-primary);
+    }
+
+    .breadcrumbs span {
+      color: #66728d;
+    }
+
+    .organization {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 200px;
+      font-size: 11px;
+      color: #64708b;
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .organization:hover {
+      background: var(--erp-primary-soft);
+      color: var(--erp-primary);
+    }
+
+    .organization span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .avatar {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e7e1ff;
+      color: #5947d4;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .logout, .mobile-menu {
+      border: 0;
+      background: transparent;
+      color: #8a96ad;
+      display: grid;
+      place-items: center;
+      padding: 6px;
+      border-radius: 7px;
+    }
+
+    .logout:hover, .mobile-menu:hover {
+      color: var(--erp-primary);
+      background: var(--erp-primary-soft);
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    .logout-error {
+      margin: 0;
+      padding: 8px 24px;
+      background: #fff1f2;
+      color: #b42318;
+      font-size: 12px;
+    }
+
+    @media(max-width: 900px) {
+      .mobile-menu { display: grid; }
+    }
+
+    @media(max-width: 520px) {
+      .topbar { padding: 0 14px; }
+      .organization span { display: none; }
+      .actions { gap: 7px; }
+    }

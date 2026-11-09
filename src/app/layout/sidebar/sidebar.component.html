@@ -1,0 +1,51 @@
+<aside class="sidebar">
+  <div class="brand">
+    <span class="brand-symbol">◇</span>
+    <span class="brand-name">workspace</span>
+    <lucide-icon [img]="ChevronsUpDown" [size]="13" class="brand-chevron" />
+  </div>
+
+  <div class="sidebar-body">
+    <div class="section-label">WORKSPACE</div>
+
+    <nav class="nav-list" aria-label="Workspace navigation">
+      <a class="nav-link" [routerLink]="dashboardLink" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }" (click)="closeRequested.emit()">
+        <lucide-icon [img]="LayoutDashboard" [size]="16" />
+        <span>Overview</span>
+      </a>
+
+      @for (item of businessItems; track item.label) {
+      <span class="nav-link disabled" [title]="item.label + ' coming soon'">
+        <lucide-icon [img]="item.icon" [size]="16" />
+        <span>{{ item.label }}</span>
+      </span>
+      }
+    </nav>
+
+    <div class="section-label management">MANAGEMENT</div>
+
+    <nav class="nav-list" aria-label="Management navigation">
+      <span class="nav-link disabled" title="Coming soon">
+        <lucide-icon [img]="FolderKanban" [size]="16" />
+        <span>Projects</span>
+      </span>
+
+      <span class="nav-link disabled" title="Coming soon">
+        <lucide-icon [img]="Settings" [size]="16" />
+        <span>Settings</span>
+      </span>
+    </nav>
+  </div>
+
+  <div class="sidebar-footer">
+    <a class="profile" routerLink="/organizations" (click)="closeRequested.emit()" title="Switch organization">
+      <span class="avatar">{{ initials }}</span>
+      <span class="profile-info">
+        <strong>{{ fullName }}</strong>
+        <small>{{ organizations.selected()?.role ?? 'Member' }}</small>
+      </span>
+      <span class="profile-dots">···</span>
+    </a>
+  </div>
+</aside>

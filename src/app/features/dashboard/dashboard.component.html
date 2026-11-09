@@ -1,0 +1,93 @@
+<div class="dashboard">
+  <section class="page-heading">
+    <div>
+      <div class="date-label">{{ todayLabel }}</div>
+
+      <h1>
+        {{ greeting() }},
+        {{ auth.user()?.firstName || 'there' }}
+        <span class="sun">✳</span>
+      </h1>
+
+      <p>
+        Here's what's happening with your business.
+      </p>
+    </div>
+
+    <div class="period">
+      <lucide-icon [img]="CalendarDays" [size]="14" />
+      Last 30 days
+    </div>
+  </section>
+
+  <section class="stats-grid" aria-label="Business metrics">
+    <app-stat-card label="Total revenue" description="Available when Sales is enabled" [icon]="BarChart3" />
+    <app-stat-card label="Total orders" description="Available when Sales is enabled" [icon]="ShoppingCart" />
+    <app-stat-card label="Active customers" description="Available when CRM is enabled" [icon]="Users" />
+  </section>
+
+  <section class="panel chart-panel">
+    <div class="panel-header">
+      <div>
+        <h2>Revenue overview</h2>
+        <p>Revenue performance over time</p>
+      </div>
+      <lucide-icon [img]="MoreHorizontal" [size]="19" class="muted-icon" />
+    </div>
+
+    <div class="chart-empty">
+      <div class="chart-icon">
+        <lucide-icon [img]="BarChart3" [size]="25" />
+      </div>
+
+      <h3>No revenue data yet</h3>
+      <p>
+        Your revenue chart will appear here once
+        the Sales module is available.
+      </p>
+    </div>
+  </section>
+
+  <section class="panel activity-panel">
+    <div class="panel-header">
+      <div>
+        <h2>Recent activity</h2>
+        <p>Latest events in your workspace</p>
+      </div>
+      <lucide-icon [img]="Activity" [size]="18" class="muted-icon" />
+    </div>
+
+    <div class="activity-empty">
+      <span class="activity-icon">
+        <lucide-icon [img]="Activity" [size]="18" />
+      </span>
+
+      <div>
+        <strong>No recent activity</strong>
+        <p>
+          Your organization's activity will appear here.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="getting-started">
+    <div class="getting-started-icon">
+      <lucide-icon [img]="Building2" [size]="20" />
+    </div>
+
+    <div class="getting-started-content">
+      <h3>Your workspace is ready</h3>
+      <p>
+        {{ organizations.selected()?.organization?.name }}
+        is set up. Business modules will be available
+        as we continue developing the ERP.
+      </p>
+    </div>
+
+    <a routerLink="/organizations" class="workspace-link">
+      Manage workspace
+      <lucide-icon [img]="ArrowUpRight" [size]="15" />
+    </a>
+  </section>
+</div>

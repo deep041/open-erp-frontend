@@ -1,0 +1,60 @@
+:host { display: block; }
+
+    .erp-shell {
+      display: flex;
+      width: 100%;
+      min-height: 100dvh;
+      background: var(--erp-background);
+    }
+
+    .sidebar-container {
+      position: sticky;
+      top: 0;
+      height: 100dvh;
+      width: var(--erp-sidebar-width);
+      flex-shrink: 0;
+      z-index: 30;
+    }
+
+    .main-container {
+      flex: 1;
+      min-width: 0;
+      background: white;
+    }
+
+    .content {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 27px 24px 50px;
+    }
+
+    .backdrop { display: none; }
+
+    @media(max-width: 900px) {
+      .sidebar-container {
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+      }
+
+      .sidebar-container.mobile-open {
+        transform: translateX(0);
+      }
+
+      .backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        border: 0;
+        background: rgba(20, 20, 40, .35);
+      }
+    }
+
+    @media(max-width: 600px) {
+      .content {
+        padding: 22px 15px 36px;
+      }
+    }

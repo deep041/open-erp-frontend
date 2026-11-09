@@ -1,0 +1,47 @@
+.stat-card {
+      min-height: 125px;
+      padding: 19px 15px;
+      border: 1px solid var(--erp-border);
+      border-radius: var(--erp-radius);
+      background: var(--erp-surface);
+      box-shadow: var(--erp-shadow);
+    }
+
+    .stat-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      color: var(--erp-muted);
+      font-size: 11px;
+    }
+
+    .stat-value {
+      margin-top: 16px;
+      font-size: clamp(23px, 2.5vw, 29px);
+      line-height: 1.1;
+      font-weight: 750;
+      letter-spacing: -1.2px;
+      color: var(--erp-text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-change {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 13px;
+      font-size: 10px;
+      color: var(--erp-success);
+    }
+
+    .stat-change span {
+      margin-left: 2px;
+      color: var(--erp-muted);
+    }
+
+    .stat-empty {
+      margin: 12px 0 0;
+      color: var(--erp-muted);
+      font-size: 10px;
+    }

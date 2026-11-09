@@ -1,0 +1,31 @@
+<header class="topbar">
+  <div class="breadcrumbs">
+    <button class="mobile-menu" type="button" aria-label="Open navigation" (click)="menuRequested.emit()">
+      <lucide-icon [img]="Menu" [size]="19" />
+    </button>
+
+    <a routerLink="/organizations">Workspace</a>
+    <lucide-icon [img]="ChevronRight" [size]="13" />
+    <span>Overview</span>
+  </div>
+
+  <div class="actions">
+    <a class="organization" routerLink="/organizations" title="Switch organization">
+      <lucide-icon [img]="Building2" [size]="15" />
+      <span>{{ organizations.selected()?.organization?.name }}</span>
+    </a>
+
+    <span class="avatar">{{ initials }}</span>
+
+    <button class="logout" type="button" [disabled]="loggingOut()" (click)="logout()" aria-label="Log out"
+      title="Log out">
+      <lucide-icon [img]="LogOut" [size]="17" />
+    </button>
+  </div>
+</header>
+
+@if (logoutError()) {
+<p class="logout-error" role="alert">
+  {{ logoutError() }}
+</p>
+}

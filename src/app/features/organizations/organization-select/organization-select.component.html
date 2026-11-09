@@ -1,0 +1,153 @@
+<div class="workspace-page">
+  <header class="header">
+    <div class="brand">
+      <span class="brand-icon">◇</span>
+      <strong>workspace</strong>
+    </div>
+
+    <div class="header-actions">
+      <span class="user-avatar">{{ initials }}</span>
+      <span class="user-name">
+        {{ auth.user()?.firstName }}
+      </span>
+      <button class="icon-button" type="button" title="Log out" aria-label="Log out" [disabled]="loggingOut()"
+        (click)="logout()">
+        <lucide-icon [img]="LogOut" [size]="18" />
+      </button>
+    </div>
+  </header>
+
+  <main class="workspace-main">
+    <div class="page-heading">
+      <div>
+        <div class="eyebrow">YOUR WORKSPACES</div>
+        <h1>Choose an organization</h1>
+        <p>
+          Select where you'd like to work,
+          or create a new organization.
+        </p>
+      </div>
+
+      <button class="primary-button desktop-create" type="button" (click)="openCreateDialog()">
+        <lucide-icon [img]="Plus" [size]="17" />
+        New organization
+      </button>
+    </div>
+
+    @if (error()) {
+    <div class="error-message" role="alert">
+      {{ error() }}
+      <button type="button" (click)="load()">
+        Retry
+      </button>
+    </div>
+    }
+
+    @if (loading()) {
+    <div class="loading-state" role="status">
+      Loading organizations...
+    </div>
+    } @else {
+    <div class="organization-grid">
+      @for (
+      membership of organizations();
+      track membership.organization.id
+      ) {
+      <button class="organization-card" type="button" (click)="open(membership)">
+        <div class="card-top">
+          <div class="organization-avatar">
+            {{ membership.organization.name.charAt(0).toUpperCase() }}
+          </div>
+          <lucide-icon [img]="ArrowUpRight" [size]="19" class="card-arrow" />
+        </div>
+
+        <div class="organization-details">
+          <h2>{{ membership.organization.name }}</h2>
+          <span class="role-badge">
+            {{ membership.role }}
+          </span>
+          <p>
+            {{ membership.organization.slug }}
+          </p>
+        </div>
+
+        <div class="card-footer">
+          <span>Open workspace</span>
+          <lucide-icon [img]="ArrowUpRight" [size]="15" />
+        </div>
+      </button>
+      }
+
+      <button class="create-card" type="button" (click)="openCreateDialog()">
+        <span class="create-icon">
+          <lucide-icon [img]="Plus" [size]="23" />
+        </span>
+        <strong>Create organization</strong>
+        <span>Start a new workspace</span>
+      </button>
+    </div>
+    }
+  </main>
+
+  <footer class="page-footer">
+    <span>Open-source ERP platform</span>
+    <span>Developed with ♥ by Deep Patel</span>
+  </footer>
+
+  @if (showCreateDialog()) {
+  <div class="modal-backdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="create-title">
+      <div class="modal-header">
+        <div class="modal-icon">
+          <lucide-icon [img]="Building2" [size]="21" />
+        </div>
+
+        <button class="icon-button" type="button" aria-label="Close dialog" [disabled]="saving()"
+          (click)="closeCreateDialog()">
+          <lucide-icon [img]="X" [size]="19" />
+        </button>
+      </div>
+
+      <h2 id="create-title">Create organization</h2>
+      <p class="modal-subtitle">
+        Set up a new workspace for your business.
+      </p>
+
+      <form [formGroup]="form" (ngSubmit)="create()">
+        <div class="form-group">
+          <label for="organization-name">
+            Organization name
+          </label>
+          <input id="organization-name" formControlName="name" placeholder="e.g. Acme Trading"
+            (input)="suggestSlug()" />
+        </div>
+
+        <div class="form-group">
+          <label for="organization-slug">
+            Workspace URL slug
+          </label>
+          <input id="organization-slug" formControlName="slug" placeholder="e.g. acme-trading" />
+          <small>
+            Lowercase letters, numbers and hyphens only.
+          </small>
+        </div>
+
+        @if (createError()) {
+        <div class="error-message" role="alert">
+          {{ createError() }}
+        </div>
+        }
+
+        <div class="modal-actions">
+          <button class="secondary-button" type="button" [disabled]="saving()" (click)="closeCreateDialog()">
+            Cancel
+          </button>
+          <button class="primary-button" type="submit" [disabled]="form.invalid || saving()">
+            {{ saving() ? 'Creating...' : 'Create organization' }}
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+  }
+</div>

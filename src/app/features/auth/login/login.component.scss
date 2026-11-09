@@ -1,0 +1,18 @@
+.auth-page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: #f6f7fb;
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 420px;
+      padding: 24px;
+    }
+    form {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .error { color: #b42318; }
