@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Eye, EyeOff, LockKeyhole, LucideAngularModule, Mail, UserRound } from 'lucide-angular';
 import { finalize } from 'rxjs';
 import { AuthService } from '../../../core/auth/auth.service';
+import { LogoComponent } from '../../../shared/ui/logo/logo.component';
 
 function passwordsMatch(
   control: AbstractControl,
@@ -22,8 +23,9 @@ function passwordsMatch(
   imports: [
     ReactiveFormsModule,
     RouterLink,
-    LucideAngularModule
-  ],
+    LucideAngularModule,
+    LogoComponent
+],
   templateUrl: './register.component.html',
   styleUrl: '../auth-page.scss'
 })

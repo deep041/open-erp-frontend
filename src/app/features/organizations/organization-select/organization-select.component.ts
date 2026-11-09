@@ -5,14 +5,16 @@ import { ArrowUpRight, Building2, LogOut, LucideAngularModule, Plus, RefreshCw, 
 import { finalize } from 'rxjs';
 import { AuthService } from '../../../core/auth/auth.service';
 import { OrganizationMembership } from '../../../core/models/auth.models';
+import { LogoComponent } from '../../../shared/ui/logo/logo.component';
 import { OrganizationService } from '../organization.service';
 
 @Component({
   selector: 'app-organization-select',
   imports: [
     ReactiveFormsModule,
-    LucideAngularModule
-  ],
+    LucideAngularModule,
+    LogoComponent
+],
   templateUrl: './organization-select.component.html',
   styleUrl: './organization-select.component.scss'
 })

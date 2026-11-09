@@ -1,0 +1,7 @@
+<a class="brand" [routerLink]="link()" [class.icon-only]="variant() === 'icon'" [class.large]="size() === 'lg'"
+  [class.small]="size() === 'sm'" [attr.aria-label]="brandName() + ' home'">
+  <img [src]="variant() === 'icon'
+          ? '/branding/icon.svg'
+          : '/branding/logo.svg'" [alt]="variant() === 'icon' ? brandName() : ''"
+    [attr.width]="variant() === 'icon' ? 36 : null" [attr.height]="variant() === 'icon' ? 36 : null" />
+</a>

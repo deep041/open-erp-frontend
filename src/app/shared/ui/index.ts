@@ -13,3 +13,7 @@ export * from './dialog/dialog.service';
 export * from './toast/toast.component';
 export * from './toast/toast.service';
 
+export * from './pagination/pagination.component';
+export * from './table/table.component';
+export * from './table/table.types';
+

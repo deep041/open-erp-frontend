@@ -1,0 +1,117 @@
+<section class="table-card">
+  <div class="table-toolbar">
+    <div>
+      <h2>{{ title() }}</h2>
+      @if (description()) {
+      <p>{{ description() }}</p>
+      }
+    </div>
+
+    @if (searchable()) {
+    <label class="search-box">
+      <lucide-icon [img]="Search" [size]="16" />
+      <input type="search" aria-label="Search records" placeholder="Search records..." [value]="query().search"
+        (input)="searchInput.emit($any($event.target).value)" />
+    </label>
+    }
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          @if (selectable()) {
+          <th class="check-column">
+            <input type="checkbox" aria-label="Select all visible rows" [checked]="allSelected()"
+              [indeterminate]="someSelected()" [disabled]="loading() || rows().length === 0"
+              (change)="toggleAll($any($event.target).checked)" />
+          </th>
+          }
+
+          @for (column of columns(); track column.key) {
+          <th [style.width]="column.width || null" [style.text-align]="column.align || 'left'"
+            [attr.aria-sort]="sortAria(column)">
+            @if (column.sortable) {
+            <button class="sort-button" type="button" (click)="toggleSort(column.key)">
+              {{ column.header }}
+              <lucide-icon [img]="sortIcon(column.key)" [size]="13" />
+            </button>
+            } @else {
+            {{ column.header }}
+            }
+          </th>
+          }
+
+          @if (actions().length) {
+          <th class="action-column">Actions</th>
+          }
+        </tr>
+      </thead>
+
+      <tbody>
+        @if (loading()) {
+        <tr>
+          <td [attr.colspan]="columnCount()">
+            <div class="table-state" role="status">
+              Loading records...
+            </div>
+          </td>
+        </tr>
+        } @else if (rows().length === 0) {
+        <tr>
+          <td [attr.colspan]="columnCount()">
+            <div class="table-state">
+              <lucide-icon [img]="Inbox" [size]="28" />
+              <strong>No records found</strong>
+              <span>
+                {{ query().search
+                ? 'Try a different search.'
+                : 'Records will appear here.' }}
+              </span>
+            </div>
+          </td>
+        </tr>
+        } @else {
+        @for (row of rows(); track rowId()(row)) {
+        <tr>
+          @if (selectable()) {
+          <td>
+            <input type="checkbox" [attr.aria-label]="'Select row ' + rowId()(row)"
+              [checked]="selectedIds().includes(rowId()(row))" (change)="toggleRow(row, $any($event.target).checked)" />
+          </td>
+          }
+
+          @for (column of columns(); track column.key) {
+          <td [style.text-align]="column.align || 'left'">
+            @if (column.type === 'badge') {
+            <span class="status-badge" [class]="column.badgeColor?.(row) || 'neutral'">
+              {{ column.value(row) ?? '—' }}
+            </span>
+            } @else {
+            {{ column.value(row) ?? '—' }}
+            }
+          </td>
+          }
+
+          @if (actions().length) {
+          <td class="action-cell">
+            <div class="row-actions">
+              @for (action of actions(); track action.label) {
+              <button type="button" [class.danger]="action.variant === 'danger'"
+                [disabled]="action.disabled?.(row) ?? false" (click)="actionClick.emit({ action, row })">
+                {{ action.label }}
+              </button>
+              }
+            </div>
+          </td>
+          }
+        </tr>
+        }
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <erp-pagination [page]="query().page" [pageSize]="query().pageSize" [total]="total()"
+    (pageChange)="changePage($event)" (pageSizeChange)="changePageSize($event)" />
+</section>

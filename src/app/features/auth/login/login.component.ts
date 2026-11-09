@@ -9,14 +9,16 @@ import { Router, RouterLink } from '@angular/router';
 import { ArrowRight, Eye, EyeOff, LockKeyhole, LucideAngularModule, Mail } from 'lucide-angular';
 import { finalize } from 'rxjs';
 import { AuthService } from '../../../core/auth/auth.service';
+import { LogoComponent } from '../../../shared/ui/logo/logo.component';
 
 @Component({
   selector: 'app-login',
   imports: [
     ReactiveFormsModule,
     RouterLink,
-    LucideAngularModule
-  ],
+    LucideAngularModule,
+    LogoComponent
+],
   templateUrl: './login.component.html',
   styleUrl: '../auth-page.scss'
 })

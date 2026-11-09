@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { LogoComponent } from '../../shared/ui/logo/logo.component';
 
 interface ErpModule
 {
@@ -12,7 +13,7 @@ interface ErpModule
 
 @Component({
     selector: 'app-home',
-    imports: [CommonModule, RouterLink],
+    imports: [CommonModule, RouterLink, LogoComponent],
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss'
 })

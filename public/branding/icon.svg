@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Kriyven favicon">
+ <defs>
+  <linearGradient id="stem" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00E5EF"/><stop offset="1" stop-color="#0875FF"/></linearGradient>
+  <linearGradient id="upper" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#0875FF"/><stop offset=".5" stop-color="#6935F5"/><stop offset="1" stop-color="#D43BF0"/></linearGradient>
+  <linearGradient id="lower" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3822CE"/><stop offset="1" stop-color="#C735F4"/></linearGradient>
+ </defs>
+ <rect width="512" height="512" rx="112" fill="#080F2D"/>
+ <path d="M126 162Q126 120 170 120H220Q234 120 234 136V274L126 382Z" fill="url(#stem)"/>
+ <path d="M249 250L389 390Q405 408 388 421Q383 425 372 425H302Q289 425 279 414L193 327Z" fill="url(#lower)"/>
+ <path d="M126 355Q126 340 139 327L323 136Q337 120 356 120H386Q405 120 405 140Q405 150 394 162L179 410Q165 426 150 426Q126 426 126 400Z" fill="url(#upper)"/>
+</svg>

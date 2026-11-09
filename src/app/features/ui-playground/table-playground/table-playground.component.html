@@ -1,0 +1,11 @@
+<div class="page">
+  <h1>ERP Data Table</h1>
+  <p>Reusable table component demonstration</p>
+
+  <erp-table title="Customers" description="Manage your customer records" [columns]="columns" [rows]="pageRows()"
+    [rowId]="getRowId" [query]="query()" [total]="filteredRows().length" [selectable]="true"
+    [selectedIds]="selectedIds()" [actions]="actions" (queryChange)="updateQuery($event)" (searchInput)="search($event)"
+    (selectionChange)="selectedIds.set($event)" (actionClick)="handleAction($event)" />
+
+  <p>Selected: {{ selectedIds().length }}</p>
+</div>

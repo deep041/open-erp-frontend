@@ -23,14 +23,16 @@ import
   } from 'lucide-angular';
 import { AuthService } from '../../core/auth/auth.service';
 import { OrganizationService } from '../../features/organizations/organization.service';
+import { LogoComponent } from '../../shared/ui/logo/logo.component';
 
 @Component({
   selector: 'app-sidebar',
   imports: [
     RouterLink,
     RouterLinkActive,
-    LucideAngularModule
-  ],
+    LucideAngularModule,
+    LogoComponent
+],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

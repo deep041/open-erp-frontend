@@ -1,0 +1,37 @@
+:host {
+      display: inline-flex;
+      max-width: 100%;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      max-width: 100%;
+    }
+
+    img {
+      display: block;
+      width: auto;
+      height: 38px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .small img { height: 30px; }
+    .large img { height: 52px; }
+
+    .icon-only img {
+      width: 36px;
+      height: 36px;
+    }
+
+    .icon-only.small img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .icon-only.large img {
+      width: 48px;
+      height: 48px;
+    }

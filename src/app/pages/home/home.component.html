@@ -4,7 +4,7 @@
   <header class="navbar">
     <div class="nav-inner">
 
-      <a class="brand" routerLink="/" (click)="closeMenu()">
+      <!-- <a class="brand" routerLink="/" (click)="closeMenu()">
         <span class="brand-symbol">
           <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
             <path d="M16 3L29 16L16 29L3 16L16 3Z" stroke="currentColor" stroke-width="2.5" />
@@ -13,7 +13,9 @@
         </span>
         <span class="brand-name">open<span>erp</span></span>
         <span class="brand-beta">BETA</span>
-      </a>
+      </a> -->
+
+      <app-logo></app-logo>
 
       <nav class="desktop-nav" aria-label="Main navigation">
         @for (link of navLinks; track link.href) {
@@ -518,10 +520,11 @@
     <div class="container">
       <div class="footer-main">
         <div class="footer-brand-block">
-          <a class="brand" routerLink="/">
+          <!-- <a class="brand" routerLink="/">
             <span class="brand-symbol">◈</span>
             <span class="brand-name">open<span>erp</span></span>
-          </a>
+          </a> -->
+          <app-logo></app-logo>
           <p>
             The open-source platform for<br />
             the next generation of businesses.

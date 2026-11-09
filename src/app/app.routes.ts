@@ -65,6 +65,13 @@ export const routes: Routes = [
       ).then(m => m.UiPlaygroundComponent),
   },
   {
+    path: 'table-playground',
+    loadComponent: () =>
+      import(
+        './features/ui-playground/table-playground/table-playground.component'
+      ).then(m => m.TablePlaygroundComponent),
+  },
+  {
     path: '**',
     redirectTo: 'organizations',
   },
